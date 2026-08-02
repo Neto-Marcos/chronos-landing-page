@@ -32,7 +32,6 @@ npx serve .
 
 O projeto está preparado para hospedagem estática na Vercel.
 
-## Antes do uso comercial
+## Status
 
-Preencha razão social, CNPJ e endereço comercial nos textos legais. Esses dados continuam sinalizados com placeholders para evitar a publicação de informações incorretas.
-
+O Chronos está em desenvolvimento. As páginas legais deixam isso explícito e deverão ser revisadas antes de uma operação comercial.
