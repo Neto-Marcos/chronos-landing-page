@@ -1,0 +1,12 @@
+{
+  "name": "Chronos — Gestão de Jornada",
+  "short_name": "Chronos",
+  "description": "Gestão inteligente de jornada.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0A08",
+  "theme_color": "#B88A28",
+  "icons": [
+    { "src": "/assets/chronos-mark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

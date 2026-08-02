@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 160" role="img" aria-labelledby="title">
+  <title id="title">Chronos</title>
+  <g transform="translate(10 10)">
+    <rect width="140" height="140" rx="34" fill="#B88A28"/>
+    <path d="M70 22 106 38v25c0 24.8-14.4 46-36 56.3C48.4 109 34 87.8 34 63V38l36-16Z" fill="#0B0A08"/>
+    <circle cx="70" cy="67" r="20" fill="none" stroke="#D1B36A" stroke-width="7"/>
+    <path d="M70 55v13l10 7M52 91l10 9 25-27" fill="none" stroke="#D1B36A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="180" y="101" fill="#F5F2EA" font-family="Manrope, Arial, sans-serif" font-size="74" font-weight="800" letter-spacing="-3">Chronos</text>
+  <text x="184" y="129" fill="#D1B36A" font-family="Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="4">GESTÃO DE JORNADA</text>
+</svg>
