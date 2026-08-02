@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chronos — Controle de ponto com reconhecimento facial</title>
+    <meta
+      name="description"
+      content="Gerencie registros, escalas, banco de horas e inconsistências com reconhecimento facial e visão centralizada da jornada."
+    />
+    <link rel="canonical" href="https://chronos-site-tau.vercel.app/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Chronos" />
+    <meta property="og:title" content="Chronos — Controle de ponto com reconhecimento facial" />
+    <meta
+      property="og:description"
+      content="Gerencie registros, escalas, banco de horas e inconsistências com reconhecimento facial e visão centralizada da jornada."
+    />
+    <meta property="og:url" content="https://chronos-site-tau.vercel.app/" />
+    <meta property="og:image" content="https://chronos-site-tau.vercel.app/og.png" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Chronos — Controle de ponto com reconhecimento facial" />
+    <meta
+      name="twitter:description"
+      content="Gerencie registros, escalas, banco de horas e inconsistências com reconhecimento facial e visão centralizada da jornada."
+    />
+    <meta name="twitter:image" content="https://chronos-site-tau.vercel.app/og.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Chronos",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "Plataforma de gestão de jornada com registro de ponto por reconhecimento facial, banco de horas automático e gestão de empresas e filiais.",
+        "inLanguage": "pt-BR",
+        "offers": [
+          { "@type": "Offer", "name": "Essencial", "price": "99", "priceCurrency": "BRL" },
+          { "@type": "Offer", "name": "Profissional", "price": "199", "priceCurrency": "BRL" },
+          { "@type": "Offer", "name": "Empresa", "price": "399", "priceCurrency": "BRL" }
+        ]
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/main-CQTx5SN4.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/styles-CwHz0bU1.css">
+  </head>
+  <body>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z" />
+          <path d="M9 12l2 2 4-4" />
+        </symbol>
+        <symbol id="i-face" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2" />
+          <path d="M9 10h.01M15 10h.01M9.5 15a3.5 3.5 0 0 0 5 0" />
+        </symbol>
+        <symbol id="i-offline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12.55a11 11 0 0 1 5.17-2.39M10.71 5.05A16 16 0 0 1 22.58 9M1.42 9a15.91 15.91 0 0 1 4.7-2.88M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01" />
+          <path d="M2 2l20 20" />
+        </symbol>
+        <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M15 9h4a2 2 0 0 1 2 2v10" />
+          <path d="M9 7h2M9 11h2M9 15h2" />
+        </symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3 2" />
+        </symbol>
+        <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5z" />
+          <path d="M9 11h.01M12 11h.01M15 11h.01" />
+        </symbol>
+        <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12l5 5L20 7" />
+        </symbol>
+        <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="8" r="3.5" />
+          <path d="M3 20a6 6 0 0 1 12 0M16 4.6a3.5 3.5 0 0 1 0 6.8M21 20a6 6 0 0 0-4-5.65" />
+        </symbol>
+        <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="5" width="18" height="16" rx="2" />
+          <path d="M8 3v4M16 3v4M3 10h18" />
+        </symbol>
+        <symbol id="i-adjust" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20h9" />
+          <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+        </symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.3 4.6L2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.6a2 2 0 0 0-3.4 0z" />
+          <path d="M12 9v4M12 17h.01" />
+        </symbol>
+        <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 20V10M10 20V4M16 20v-7M21 20H3" />
+        </symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="11" width="14" height="10" rx="2" />
+          <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+        </symbol>
+        <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v12M7 10l5 5 5-5M4 21h16" />
+        </symbol>
+        <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="15" r="4" />
+          <path d="M10.85 12.15L19 4M18 5l2 2M15 8l2 2" />
+        </symbol>
+        <symbol id="i-tablet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="2" width="14" height="20" rx="2" />
+          <path d="M12 18h.01" />
+        </symbol>
+        <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+          <path d="M14 2v6h6M9 14h6M9 17h4" />
+        </symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </symbol>
+        <symbol id="i-brand" viewBox="0 0 32 32">
+          <rect width="32" height="32" rx="8" fill="var(--gold)" />
+          <path
+            d="M16 6.5l6.5 2.8v4.9c0 4.2-2.8 7.9-6.5 9.3-3.7-1.4-6.5-5.1-6.5-9.3V9.3L16 6.5z"
+            fill="none"
+            stroke="var(--bg)"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+          <path d="M13 15.5l2.2 2.2 4-4.4" fill="none" stroke="var(--bg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="header" data-open="false">
+      <div class="container header__inner">
+        <a class="brand" href="/" aria-label="Chronos — página inicial">
+          <svg width="30" height="30" aria-hidden="true"><use href="#i-brand" /></svg>
+          Chronos
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menu" aria-controls="menu-principal">
+          <svg width="22" height="22" aria-hidden="true"><use href="#i-menu" /></svg>
+        </button>
+        <nav class="nav" id="menu-principal" aria-label="Navegação principal">
+          <a href="#funcionalidades">Funcionalidades</a>
+          <a href="#como-funciona">Como funciona</a>
+          <a href="#planos">Planos</a>
+          <a href="#seguranca">Segurança</a>
+          <a href="#faq">Perguntas frequentes</a>
+        </nav>
+        <div class="header__actions">
+          <a class="header__login" href="https://admin-panel-production-7c1d.up.railway.app" data-track="cta_login">Entrar</a>
+          <a class="btn btn--primary btn--sm" href="/contato/" data-track="cta_demo" data-track-label="header">Agendar demonstração</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <!-- ============ HERO ============ -->
+      <section class="hero dot-texture">
+        <div class="container hero__grid">
+          <div class="animate-in">
+            <span class="hero__badge">
+              <svg width="14" height="14" aria-hidden="true"><use href="#i-face" /></svg>
+              Gestão de jornada com reconhecimento facial
+            </span>
+            <h1>Sua jornada sob controle. Seu ponto reconhecido em segundos.</h1>
+            <p class="hero__lead">
+              Controle registros, escalas, banco de horas e inconsistências em uma plataforma
+              criada para simplificar a rotina da sua empresa.
+            </p>
+            <div class="hero__ctas">
+              <a class="btn btn--primary" href="/contato/" data-track="cta_demo" data-track-label="hero">Agendar demonstração</a>
+              <a class="btn btn--ghost" href="#como-funciona">Ver como funciona</a>
+            </div>
+            <p class="hero__client">
+              Já sou cliente — <a href="https://admin-panel-production-7c1d.up.railway.app" data-track="cta_login">entrar no painel</a>
+            </p>
+          </div>
+
+          <!-- Mockup ilustrativo do painel: todos os dados são fictícios -->
+          <div class="mock animate-in" role="img" aria-label="Ilustração do painel do Chronos com indicadores de presença, gráfico de movimento por horário e registros recentes. Dados ilustrativos.">
+            <div class="mock__bar">
+              <div class="mock__dots"><span></span><span></span><span></span></div>
+              <span class="mock__note">Dados ilustrativos</span>
+            </div>
+            <div class="mock__body">
+              <div class="mock__side">
+                <span class="mock__side-brand">
+                  <svg width="16" height="16" aria-hidden="true"><use href="#i-brand" /></svg>
+                  Chronos
+                </span>
+                <span class="mock__side-item mock__side-item--active">Visão geral</span>
+                <span class="mock__side-item">Funcionários</span>
+                <span class="mock__side-item">Registros de ponto</span>
+                <span class="mock__side-item">Banco de horas</span>
+                <span class="mock__side-item">Ajustes</span>
+                <span class="mock__side-item">Filiais</span>
+              </div>
+              <div class="mock__main">
+                <div class="mock__stats">
+                  <div class="mock__stat mock__stat--gold"><strong>93%</strong>Presença hoje</div>
+                  <div class="mock__stat"><strong>48</strong>Colaboradores</div>
+                  <div class="mock__stat"><strong>3</strong>Atrasos</div>
+                  <div class="mock__stat"><strong>2</strong>Filiais</div>
+                </div>
+                <div class="mock__panel">
+                  <div class="mock__panel-title"><span>Movimento por horário</span><span>Hoje</span></div>
+                  <div class="mock__chart">
+                    <span style="height: 22%"></span><span style="height: 58%"></span><span style="height: 92%"></span><span style="height: 65%"></span><span style="height: 30%"></span><span style="height: 18%"></span><span style="height: 26%"></span><span style="height: 60%"></span><span style="height: 88%"></span><span style="height: 52%"></span>
+                  </div>
+                </div>
+                <div class="mock__rows">
+                  <div class="mock__row"><span class="mock__avatar">AM</span>Ana Martins · Entrada 07:58<span class="mock__tag mock__tag--ok">Em jornada</span></div>
+                  <div class="mock__row"><span class="mock__avatar">CD</span>Carlos Duarte · Entrada 08:12<span class="mock__tag mock__tag--warn">Atraso</span></div>
+                  <div class="mock__row"><span class="mock__avatar">JP</span>Júlia Prado · Ajuste pendente<span class="mock__tag mock__tag--info">Em análise</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FAIXA DE BENEFÍCIOS ============ -->
+      <section class="benefits" aria-label="Principais características">
+        <div class="container">
+          <ul class="benefits__list">
+            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-face" /></svg>Reconhecimento facial</li>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-offline" /></svg>Funciona offline</li>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-building" /></svg>Gestão multiempresa</li>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-clock" /></svg>Banco de horas automático</li>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-chat" /></svg>Autoatendimento pelo WhatsApp</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ PROBLEMA / SOLUÇÃO ============ -->
+      <section class="section">
+        <div class="container split">
+          <div>
+            <span class="kicker">O problema</span>
+            <h2>Menos planilhas. Mais clareza sobre a jornada.</h2>
+            <p style="color: var(--text-2)">
+              Planilhas espalhadas, ajustes por mensagem e cálculo manual de banco de horas
+              consomem tempo e escondem problemas. O Chronos centraliza a jornada inteira em um
+              único painel — do registro no tablet ao fechamento do mês.
+            </p>
+          </div>
+          <ul>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check" /></svg>Registros de ponto em tempo real, com foto de cada marcação</li>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check" /></svg>Escalas por cargo, setor e filial</li>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check" /></svg>Ajustes com fluxo de aprovação e trilha de auditoria</li>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check" /></svg>Atrasos, ausências e jornadas incompletas sinalizados automaticamente</li>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check" /></svg>Banco de horas calculado sem intervenção manual</li>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check" /></svg>Empresas e filiais administradas em um só lugar</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ RECONHECIMENTO FACIAL ============ -->
+      <section class="section section--alt" id="reconhecimento">
+        <div class="container split">
+          <div>
+            <span class="kicker">Reconhecimento facial</span>
+            <h2>Um registro rápido para o colaborador. Um processo confiável para a empresa.</h2>
+            <p style="color: var(--text-2)">
+              Sem crachá, sem senha, sem fila: o colaborador olha para o tablet e o ponto é
+              registrado com foto. E se a internet cair, o quiosque continua funcionando — os
+              registros entram em uma fila local e são sincronizados assim que a conexão voltar.
+            </p>
+          </div>
+          <ol class="flow">
+            <li><strong>Cadastro facial em três poses</strong><span>Frontal, lateral esquerda e lateral direita.</span></li>
+            <li><strong>Checagem de qualidade</strong><span>As imagens passam por validação antes de serem aceitas.</span></li>
+            <li><strong>Criação da referência facial</strong><span>O sistema gera a referência usada nas comparações.</span></li>
+            <li><strong>Identificação no tablet</strong><span>O colaborador se posiciona diante do quiosque.</span></li>
+            <li><strong>Registro do ponto</strong><span>A marcação é gravada com data, hora e foto.</span></li>
+            <li><strong>Fila offline</strong><span>Sem conexão, os registros ficam guardados no próprio tablet.</span></li>
+            <li><strong>Sincronização posterior</strong><span>Ao reconectar, tudo é enviado ao painel automaticamente.</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ COMO FUNCIONA ============ -->
+      <section class="section" id="como-funciona">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Como funciona</span>
+            <h2>Do cadastro ao acompanhamento em quatro etapas</h2>
+          </div>
+          <div class="grid-4">
+            <div class="card">
+              <div class="step__num">1</div>
+              <h3>Configure a empresa</h3>
+              <p>Cadastre filiais, departamentos, setores, cargos e escalas.</p>
+            </div>
+            <div class="card">
+              <div class="step__num">2</div>
+              <h3>Cadastre a equipe</h3>
+              <p>Organize os colaboradores e registre as três poses faciais.</p>
+            </div>
+            <div class="card">
+              <div class="step__num">3</div>
+              <h3>Comece a registrar</h3>
+              <p>Utilize um tablet compatível como quiosque de ponto.</p>
+            </div>
+            <div class="card">
+              <div class="step__num">4</div>
+              <h3>Acompanhe tudo</h3>
+              <p>Visualize registros, banco de horas, inconsistências e solicitações.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FUNCIONALIDADES ============ -->
+      <section class="section section--alt" id="funcionalidades">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Funcionalidades</span>
+            <h2>Tudo o que a gestão de jornada precisa, sem complicação</h2>
+            <p>Recursos organizados do registro do ponto à administração da estrutura da empresa.</p>
+          </div>
+          <div class="grid-4">
+            <div class="card feature-group">
+              <div class="card__icon"><svg width="20" height="20" aria-hidden="true"><use href="#i-face" /></svg></div>
+              <h3>Registro</h3>
+              <ul>
+                <li><strong>Reconhecimento facial</strong><span>Ponto registrado com identificação por rosto e foto da marcação.</span></li>
+                <li><strong>Cadastro com três poses</strong><span>Frontal e laterais, com checagem de qualidade.</span></li>
+                <li><strong>Operação offline</strong><span>Fila local no tablet e sincronização automática.</span></li>
+                <li><strong>Quiosque em tablet</strong><span>Qualquer tablet compatível vira relógio de ponto.</span></li>
+              </ul>
+            </div>
+            <div class="card feature-group">
+              <div class="card__icon"><svg width="20" height="20" aria-hidden="true"><use href="#i-chart" /></svg></div>
+              <h3>Gestão</h3>
+              <ul>
+                <li><strong>Banco de horas automático</strong><span>Saldo calculado a partir das escalas, respeitando a data de admissão.</span></li>
+                <li><strong>Ajustes de ponto</strong><span>Solicitação, aprovação ou rejeição com trilha de auditoria.</span></li>
+                <li><strong>Painel de inconsistências</strong><span>Atrasos, ausências e jornadas incompletas sinalizados.</span></li>
+                <li><strong>Indicadores operacionais</strong><span>Presença do dia, movimento por horário e composição das marcações.</span></li>
+              </ul>
+            </div>
+            <div class="card feature-group">
+              <div class="card__icon"><svg width="20" height="20" aria-hidden="true"><use href="#i-users" /></svg></div>
+              <h3>Colaborador</h3>
+              <ul>
+                <li><strong>Autoatendimento</strong><span>Cada colaborador consulta os próprios registros e banco de horas.</span></li>
+                <li><strong>Atestados</strong><span>Envio de foto do atestado junto à solicitação de ajuste.</span></li>
+                <li><strong>WhatsApp</strong><span>Espelho de ponto, banco de horas e atestado pelo celular.</span></li>
+                <li><strong>Exportação CSV</strong><span>Registros exportados para análise ou envio à contabilidade.</span></li>
+              </ul>
+            </div>
+            <div class="card feature-group">
+              <div class="card__icon"><svg width="20" height="20" aria-hidden="true"><use href="#i-lock" /></svg></div>
+              <h3>Administração e segurança</h3>
+              <ul>
+                <li><strong>Gestão multiempresa</strong><span>Várias empresas na mesma conta, com dados isolados.</span></li>
+                <li><strong>Estrutura organizacional</strong><span>Filiais, departamentos, setores, cargos e escalas.</span></li>
+                <li><strong>Permissões por função</strong><span>Administrador, RH e colaborador — cada um vê só o que deve.</span></li>
+                <li><strong>Trilha de alterações</strong><span>Ajustes registram quem revisou e o histórico da marcação.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ WHATSAPP ============ -->
+      <section class="section">
+        <div class="container split">
+          <div>
+            <span class="kicker">WhatsApp</span>
+            <h2>O ponto do colaborador, direto no celular</h2>
+            <p style="color: var(--text-2)">
+              Sem instalar nada: pelo WhatsApp, o colaborador consulta a própria jornada e envia
+              documentos sem precisar passar pelo RH. A disponibilidade pode depender da
+              configuração da empresa e da Meta Cloud API.
+            </p>
+          </div>
+          <ul>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check" /></svg><span><strong style="color: var(--text)">Espelho de ponto</strong> — as marcações do período, na conversa</span></li>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check" /></svg><span><strong style="color: var(--text)">Banco de horas</strong> — consulta do saldo atual</span></li>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check" /></svg><span><strong style="color: var(--text)">Envio de atestado</strong> — foto do documento vira solicitação de ajuste</span></li>
+            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check" /></svg><span><strong style="color: var(--text)">Consulta de status</strong> — acompanhamento das solicitações</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ SEGURANÇA ============ -->
+      <section class="section section--alt" id="seguranca">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Segurança e privacidade</span>
+            <h2>Segurança desde a estrutura do produto</h2>
+            <p>
+              Reconhecimento facial envolve dados sensíveis — e o Chronos foi construído levando
+              isso a sério, da arquitetura ao dia a dia.
+            </p>
+          </div>
+          <div class="grid-3">
+            <div class="card">
+              <div class="card__icon"><svg width="20" height="20" aria-hidden="true"><use href="#i-building" /></svg></div>
+              <h3>Isolamento por empresa</h3>
+              <p>Os dados de cada empresa são isolados: nenhum cliente acessa informações de outro.</p>
+            </div>
+            <div class="card">
+              <div class="card__icon"><svg width="20" height="20" aria-hidden="true"><use href="#i-key" /></svg></div>
+              <h3>Níveis de acesso</h3>
+              <p>Permissões por função: administrador, RH e colaborador enxergam apenas o necessário.</p>
+            </div>
+            <div class="card">
+              <div class="card__icon"><svg width="20" height="20" aria-hidden="true"><use href="#i-lock" /></svg></div>
+              <h3>Autenticação e comunicação protegida</h3>
+              <p>Acesso autenticado ao painel e tráfego protegido entre tablet, painel e servidor.</p>
+            </div>
+            <div class="card">
+              <div class="card__icon"><svg width="20" height="20" aria-hidden="true"><use href="#i-tablet" /></svg></div>
+              <h3>Controle dos dispositivos</h3>
+              <p>Cada tablet é autorizado individualmente com credencial própria, revogável pelo painel.</p>
+            </div>
+            <div class="card">
+              <div class="card__icon"><svg width="20" height="20" aria-hidden="true"><use href="#i-face" /></svg></div>
+              <h3>Dados biométricos com responsabilidade</h3>
+              <p>Tratamento transparente das referências faciais. <a href="/biometria/">Saiba como cuidamos dos dados faciais</a>.</p>
+            </div>
+            <div class="card">
+              <div class="card__icon"><svg width="20" height="20" aria-hidden="true"><use href="#i-file" /></svg></div>
+              <h3>Retenção e exclusão</h3>
+              <p>Política de retenção e exclusão de dados descrita na <a href="/privacidade/">política de privacidade</a>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PLANOS ============ -->
+      <section class="section" id="planos">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Planos</span>
+            <h2>Um plano para cada tamanho de operação</h2>
+            <p>Assinatura mensal, sem equipamento proprietário — só um tablet compatível.</p>
+          </div>
+          <div class="pricing">
+            <div class="card plan">
+              <h3>Essencial</h3>
+              <p class="plan__for">Para equipes pequenas com uma unidade</p>
+              <p class="plan__price">R$ 99<small>/mês</small></p>
+              <p class="plan__price-note">ou R$ 990/ano — 2 meses grátis</p>
+              <ul>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Até 10 colaboradores</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>1 empresa e 1 filial</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>1 tablet</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Reconhecimento facial</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Escalas e banco de horas</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Registros e relatórios básicos</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Suporte padrão</li>
+              </ul>
+              <a class="btn btn--ghost" href="/contato/" data-track="cta_demo" data-track-label="plano-essencial">Agendar demonstração</a>
+            </div>
+            <div class="card plan plan--featured">
+              <span class="plan__badge">Mais escolhido</span>
+              <h3>Profissional</h3>
+              <p class="plan__for">Para empresas em crescimento, com filiais</p>
+              <p class="plan__price">R$ 199<small>/mês</small></p>
+              <p class="plan__price-note">ou R$ 1.990/ano — 2 meses grátis</p>
+              <ul>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Até 30 colaboradores</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Até 3 filiais</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Até 3 tablets</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Tudo do Essencial</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Ajustes de ponto e atestados</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Painel de inconsistências</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>WhatsApp para colaboradores</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Perfis administrativos e de RH</li>
+              </ul>
+              <a class="btn btn--primary" href="/contato/" data-track="cta_demo" data-track-label="plano-profissional">Agendar demonstração</a>
+            </div>
+            <div class="card plan">
+              <h3>Empresa</h3>
+              <p class="plan__for">Para operações maiores, com várias unidades</p>
+              <p class="plan__price">R$ 399<small>/mês</small></p>
+              <p class="plan__price-note">ou R$ 3.990/ano — 2 meses grátis</p>
+              <ul>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Até 70 colaboradores</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Múltiplas unidades, dentro do limite comercial</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Múltiplos tablets, dentro do limite definido</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Todas as funcionalidades</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Suporte prioritário</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Configuração assistida</li>
+              </ul>
+              <a class="btn btn--ghost" href="/contato/" data-track="cta_demo" data-track-label="plano-empresa">Agendar demonstração</a>
+            </div>
+            <div class="card plan">
+              <h3>Personalizado</h3>
+              <p class="plan__for">Para mais de 70 colaboradores</p>
+              <p class="plan__price">Sob consulta</p>
+              <p class="plan__price-note">Referência inicial de R$ 5,90 por colaborador, sujeita à definição comercial</p>
+              <ul>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Proposta personalizada</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Limites sob medida</li>
+                <li><svg width="16" height="16" aria-hidden="true"><use href="#i-check" /></svg>Todas as funcionalidades</li>
+              </ul>
+              <a class="btn btn--ghost" href="/contato/" data-track="cta_demo" data-track-label="plano-personalizado">Solicitar proposta</a>
+            </div>
+          </div>
+          <div class="pricing-notes">
+            <strong style="color: var(--text-2)">Condições e adicionais</strong>
+            <ul>
+              <li>Teste gratuito de 7 dias em qualquer plano.</li>
+              <li>Plano anual: pague o equivalente a 10 meses e use por 12.</li>
+              <li>Tablet adicional: R$ 20/mês.</li>
+              <li>Implantação: R$ 250 — gratuita em campanhas ou na contratação anual.</li>
+              <li>Mensagens excedentes do WhatsApp podem ser cobradas separadamente, quando houver custo variável.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FAQ ============ -->
+      <section class="section section--alt" id="faq">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Perguntas frequentes</span>
+            <h2>Dúvidas comuns antes de contratar</h2>
+          </div>
+          <div class="faq">
+            <details>
+              <summary>Preciso comprar um relógio de ponto?</summary>
+              <div class="faq__a"><p>Não. O Chronos transforma um tablet compatível em quiosque de ponto — não há equipamento proprietário nem biometria por hardware. Você usa um tablet que já tenha ou adquire um modelo comum no mercado.</p></div>
+            </details>
+            <details>
+              <summary>Quais tablets são compatíveis?</summary>
+              <div class="faq__a"><p>Tablets com câmera frontal e um navegador moderno atualizado. O aplicativo do quiosque roda no próprio navegador, sem instalação pela loja de aplicativos. Em caso de dúvida sobre um modelo específico, fale com a nossa equipe.</p></div>
+            </details>
+            <details>
+              <summary>O sistema funciona sem internet?</summary>
+              <div class="faq__a"><p>Sim. Se a conexão cair, o quiosque continua registrando: as marcações ficam guardadas em uma fila no próprio tablet e são sincronizadas automaticamente quando a internet volta.</p></div>
+            </details>
+            <details>
+              <summary>Como funciona o reconhecimento facial?</summary>
+              <div class="faq__a"><p>Cada colaborador passa por um cadastro facial com três poses. A partir dessas imagens, o sistema cria uma referência facial. Na hora de bater o ponto, o tablet identifica o colaborador comparando o rosto com as referências cadastradas e grava a marcação com foto.</p></div>
+            </details>
+            <details>
+              <summary>Por que são necessárias três poses?</summary>
+              <div class="faq__a"><p>As poses frontal e laterais tornam a identificação mais robusta a variações de ângulo, iluminação e posicionamento diante do tablet no dia a dia.</p></div>
+            </details>
+            <details>
+              <summary>Como os dados faciais são tratados?</summary>
+              <div class="faq__a"><p>Dados faciais são dados biométricos sensíveis e recebem tratamento específico: uso restrito à identificação no registro de ponto, isolamento por empresa e política de retenção e exclusão. Os detalhes estão na página <a href="/biometria/">Dados biométricos</a>.</p></div>
+            </details>
+            <details>
+              <summary>Posso administrar várias empresas ou filiais?</summary>
+              <div class="faq__a"><p>Sim. O Chronos é multiempresa: cada empresa tem seus dados isolados e pode organizar filiais, departamentos, setores, cargos e escalas próprios, tudo no mesmo painel.</p></div>
+            </details>
+            <details>
+              <summary>É possível ajustar uma marcação?</summary>
+              <div class="faq__a"><p>Sim, por um fluxo controlado: cria-se uma solicitação de ajuste (que pode incluir anexo, como atestado), e um perfil autorizado aprova ou rejeita. Toda alteração fica registrada com quem revisou e o histórico da marcação.</p></div>
+            </details>
+            <details>
+              <summary>O funcionário consulta o próprio ponto?</summary>
+              <div class="faq__a"><p>Sim. Cada colaborador tem acesso próprio para ver os registros, o banco de horas e o painel pessoal — e também pode consultar pelo WhatsApp, quando o recurso estiver habilitado pela empresa.</p></div>
+            </details>
+            <details>
+              <summary>Como funciona o WhatsApp?</summary>
+              <div class="faq__a"><p>Pelo WhatsApp o colaborador consulta o espelho de ponto e o banco de horas, envia foto de atestado e acompanha o status das solicitações. A disponibilidade pode depender da configuração da empresa e da Meta Cloud API.</p></div>
+            </details>
+            <details>
+              <summary>Existe implantação?</summary>
+              <div class="faq__a"><p>Sim. A implantação custa R$ 250 e pode ser gratuita em campanhas ou na contratação anual. No plano Empresa, a configuração assistida está incluída.</p></div>
+            </details>
+            <details>
+              <summary>Existe período de teste?</summary>
+              <div class="faq__a"><p>Sim: 7 dias de teste gratuito, em qualquer plano. <a href="/contato/">Fale com a gente</a> para começar — a configuração inicial é combinada no agendamento da demonstração.</p></div>
+            </details>
+            <details>
+              <summary>O Chronos está de acordo com a legislação?</summary>
+              <div class="faq__a"><p>O Chronos está sendo desenvolvido considerando os requisitos aplicáveis à gestão de jornada. A configuração e o uso adequado também dependem das políticas e obrigações de cada empresa. Antes de afirmar homologação ou conformidade integral com uma norma específica, consulte nossa equipe.</p></div>
+            </details>
+            <details>
+              <summary>Como falar com o suporte?</summary>
+              <div class="faq__a"><p>Pelos canais indicados no rodapé — WhatsApp e e-mail — ou pela página de <a href="/contato/">contato</a>. Clientes dos planos Empresa contam com suporte prioritário.</p></div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CTA FINAL ============ -->
+      <section class="section cta-final dot-texture">
+        <div class="container">
+          <h2>Transforme um tablet compatível em um ponto inteligente.</h2>
+          <p>
+            Veja como o Chronos pode simplificar a jornada da sua equipe e dar mais visibilidade
+            à sua operação.
+          </p>
+          <a class="btn btn--primary" href="/contato/" data-track="cta_demo" data-track-label="cta-final">Agendar demonstração</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ RODAPÉ ============ -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <a class="brand" href="/">
+              <svg width="28" height="28" aria-hidden="true"><use href="#i-brand" /></svg>
+              Chronos
+            </a>
+            <p>Gestão inteligente de jornada: ponto por reconhecimento facial, banco de horas automático e visão centralizada para empresas e filiais.</p>
+          </div>
+          <div>
+            <h4>Produto</h4>
+            <ul>
+              <li><a href="/#funcionalidades">Funcionalidades</a></li>
+              <li><a href="/#como-funciona">Como funciona</a></li>
+              <li><a href="/#planos">Planos</a></li>
+              <li><a href="/#seguranca">Segurança</a></li>
+              <li><a href="/#faq">Perguntas frequentes</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Acesso</h4>
+            <ul>
+              <li><a href="https://admin-panel-production-7c1d.up.railway.app" data-track="cta_login">Entrar no painel</a></li>
+              <li><a href="/contato/" data-track="cta_demo" data-track-label="footer">Agendar demonstração</a></li>
+              <li><a href="/contato/" data-whatsapp-link data-track="cta_whatsapp">WhatsApp</a></li>
+              <li><a href="mailto:marcos.neto0706@gmail.com">marcos.neto0706@gmail.com</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/privacidade/">Política de privacidade</a></li>
+              <li><a href="/termos/">Termos de uso</a></li>
+              <li><a href="/biometria/">Dados biométricos</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__legal">
+          <span>© 2026 Chronos</span>
+          <span>Feito no Brasil</span>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>
