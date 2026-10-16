@@ -10,16 +10,14 @@
     />
     <link rel="canonical" href="https://chronos-site-tau.vercel.app/biometria/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#0B0A08" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Chronos" />
     <meta property="og:title" content="Dados biométricos — Chronos" />
     <meta property="og:url" content="https://chronos-site-tau.vercel.app/biometria/" />
     <meta property="og:image" content="https://chronos-site-tau.vercel.app/og.png" />
     <meta property="og:locale" content="pt_BR" />
-    <script type="module" crossorigin src="/assets/main-CQTx5SN4.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/styles-CwHz0bU1.css">
+    <script type="module" crossorigin src="/assets/main-CvZXjF-w.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/styles-CQxH3giB.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
@@ -67,63 +65,67 @@
         <span class="kicker">Legal</span>
         <h1>Como tratamos os dados faciais</h1>
 
-        <div class="legal-pending">
-          <svg width="18" height="18" aria-hidden="true"><use href="#i-alert" /></svg>
-          <span>
-            <strong>Documento em elaboração — pendente de revisão jurídica.</strong> Esta página
-            explica as práticas atuais do produto em linguagem acessível, mas não constitui o
-            texto final nem parecer jurídico. Não publicar sem revisão profissional.
-          </span>
-        </div>
-
         <p class="lead">
-          O registro de ponto por reconhecimento facial usa dados biométricos — uma categoria de
-          dado pessoal sensível segundo a LGPD. Esta página explica, em linguagem simples, o que
-          é coletado, para que serve e como é protegido.
+          O registro de ponto por reconhecimento facial utiliza dados biométricos — uma categoria de
+          dado pessoal sensível segundo a LGPD (Lei nº 13.709/2018). Esta página explica, em
+          linguagem clara e transparente, o que é coletado, para que serve, qual a base legal e como
+          essas informações são protegidas e descartadas.
         </p>
 
         <h2>O que é coletado</h2>
         <ul>
-          <li><strong>Imagens de cadastro</strong> — três fotos do rosto (frontal, lateral esquerda e lateral direita), enviadas pelo administrador ou RH da empresa no cadastro do colaborador.</li>
-          <li><strong>Referências faciais</strong> — a partir das imagens de cadastro, o sistema gera representações matemáticas do rosto (uma por pose), usadas nas comparações. Não são fotos: são vetores numéricos que não permitem reconstruir a imagem original.</li>
-          <li><strong>Fotos de marcação</strong> — a foto capturada pelo tablet no momento de cada registro de ponto, guardada como comprovação da marcação.</li>
+          <li><strong>Imagens de cadastro</strong> — três fotos do rosto (frontal, lateral esquerda e lateral direita), capturadas pelo administrador ou RH da empresa no momento do cadastro do colaborador, com validação automática de qualidade.</li>
+          <li><strong>Referências faciais (vetores matemáticos)</strong> — a partir das imagens de cadastro, o sistema extrai representações numéricas do rosto (uma por pose), utilizadas exclusivamente para comparação no momento da batida. Vetores matemáticos não são fotografias e não permitem reconstruir a imagem original do rosto.</li>
+          <li><strong>Fotos de marcação</strong> — a imagem capturada no instante de cada registro de ponto como evidência visual de auditoria da batida, vinculada ao recibo e ao Número Sequencial de Registro (NSR).</li>
         </ul>
 
         <h2>Para que os dados servem</h2>
         <p>
-          Exclusivamente para identificar o colaborador no momento do registro de ponto e
-          comprovar as marcações. Os dados faciais não são usados para outras finalidades, não
-          são vendidos e não são compartilhados entre empresas clientes.
+          Exclusivamente para autenticar a identidade do colaborador no ato do registro de ponto,
+          evitar marcações por terceiros (fraude de ponto) e comprovar a autenticidade da jornada
+          registrada. Os dados faciais nunca são utilizados para vigilância contínua, perfilamento
+          comportamental ou fins publicitários, não são vendidos e jamais são compartilhados entre
+          empresas clientes.
         </p>
 
         <h2>Como os dados são protegidos</h2>
         <ul>
-          <li>Isolamento por empresa: os dados faciais de uma empresa nunca são comparados com os de outra;</li>
-          <li>Acesso restrito por níveis de permissão dentro da própria empresa;</li>
-          <li>Comunicação protegida entre tablet, painel e servidor;</li>
-          <li>Tablets autorizados individualmente, com credencial revogável.</li>
+          <li><strong>Isolamento estrito por empresa (multi-tenant)</strong> — as referências faciais de uma empresa nunca são comparadas nem cruzadas com as de outra organização;</li>
+          <li><strong>Controle de acesso por função</strong> — apenas perfis expressamente autorizados (Administrador e RH da própria empresa) gerenciam cadastros faciais e auditorias de baixa confiança;</li>
+          <li><strong>Comunicação e dispositivos autenticados</strong> — tráfego criptografado entre tablet, aplicativo, painel e servidor, com credencial individual e revogável para cada quiosque;</li>
+          <li><strong>Rastreabilidade</strong> — toda operação sensível e revisão de registro fica gravada em trilha de auditoria.</li>
         </ul>
 
-        <h2>Retenção e exclusão</h2>
+        <h2>Base legal e papel da empresa empregadora</h2>
         <p>
-          As referências faciais existem enquanto o colaborador estiver cadastrado. <em>[Pendente
-          de revisão jurídica: prazos formais de retenção das imagens e procedimento de exclusão
-          após o desligamento, considerando as obrigações legais de guarda de registros de
-          jornada.]</em>
+          No controle de jornada, a empresa empregadora atua como <strong>Controladora</strong> e o
+          Chronos como <strong>Operador</strong>. O tratamento biométrico para identificação unívoca
+          no ponto eletrônico fundamenta-se nas hipóteses do <strong>art. 11, inciso II, da
+          LGPD</strong> — em especial para cumprimento de obrigação legal ou regulatória trabalhista
+          pelo controlador (alínea <em>a</em>), exercício regular de direitos em processo judicial
+          ou administrativo trabalhista (alínea <em>d</em>) e garantia da prevenção à fraude e à
+          segurança do titular nos processos de identificação e autenticação de cadastro em sistemas
+          eletrônicos (alínea <em>g</em>), bem como mediante ciência e transparência perante o
+          colaborador no momento da coleta.
         </p>
 
-        <h2>Base legal e consentimento</h2>
+        <h2>Retenção e exclusão automatizada</h2>
         <p>
-          <em>[Pendente de definição jurídica: base legal aplicável ao tratamento biométrico no
-          contexto de controle de jornada (art. 11 da LGPD) e o papel da empresa empregadora
-          nesse tratamento.]</em>
+          O Chronos aplica o princípio da minimização de dados por meio de controles nativos de
+          retenção no módulo de <strong>Privacidade e Governança</strong>:
         </p>
+        <ul>
+          <li><strong>Referências faciais e fotos de cadastro</strong> — permanecem ativas apenas enquanto o colaborador mantiver vínculo ativo de registro na plataforma. Após o desligamento ou arquivamento do colaborador (respeitado eventual bloqueio de preservação legal/trabalhista), os templates biométricos e fotos de pose podem ser expurgados definitivamente sem afetar o histórico numérico das batidas.</li>
+          <li><strong>Fotos de marcação diária</strong> — possuem prazo de retenção operacional configurável pela empresa controladora. Quando uma foto de batida atinge seu prazo de expurgo, apenas a imagem acessória é removida, mantendo-se intactos o horário, o NSR e a assinatura encadeada do registro de ponto para fins trabalhistas.</li>
+        </ul>
 
         <h2>Direitos do colaborador</h2>
         <p>
-          O colaborador pode solicitar informações sobre o tratamento dos próprios dados pelo
-          canal de privacidade: marcos.neto0706@gmail.com. Veja também a
-          <a href="/privacidade/">política de privacidade</a> completa.
+          O colaborador tem direito à transparência sobre o uso de sua biometria, podendo consultar
+          suas próprias marcações e recibos no autoatendimento e solicitar esclarecimentos ou
+          exercer direitos previstos na LGPD junto ao RH de sua empresa empregadora ou pelo canal de
+          privacidade: marcos.neto0706@gmail.com. Consulte também nossa
+          <a href="/privacidade/">Política de privacidade</a> completa.
         </p>
       </div>
     </main>
@@ -139,6 +141,6 @@
         </div>
       </div>
     </footer>
-
+
   </body>
 </html>
